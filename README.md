@@ -18,6 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
+```
 class NuclearPowerPlantHealthSummaryGenerator
   def generate(region)
     PiecePipe::Pipeline.new.
@@ -31,6 +32,7 @@ class NuclearPowerPlantHealthSummaryGenerator
       to_enum
   end
 end
+```
 
 
 ## Contributing
