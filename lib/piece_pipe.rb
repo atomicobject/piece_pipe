@@ -1,0 +1,12 @@
+require 'piece_pipe/pipeline'
+require 'piece_pipe/pipeline_element'
+
+require 'piece_pipe/assembly_station'
+require 'piece_pipe/collector'
+require 'piece_pipe/debug_step'
+require 'piece_pipe/hashed_aggregator'
+require 'piece_pipe/map_step'
+require 'piece_pipe/method_assembly_station'
+require 'piece_pipe/method_element'
+require 'piece_pipe/tap_step'
+require 'piece_pipe/version'
