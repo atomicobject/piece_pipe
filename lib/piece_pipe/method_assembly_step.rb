@@ -1,5 +1,5 @@
 module PiecePipe
-  class MethodAssemblyStation < AssemblyStation
+  class MethodAssemblyStep < AssemblyStep
     def initialize(meth)
       @method = meth
     end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PiecePipe::MethodAssemblyStation do
+describe PiecePipe::MethodAssemblyStep do
   let(:pipeline) { PiecePipe::Pipeline.new }
 
   context "wrapping methods with single arguments" do

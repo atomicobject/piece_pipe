@@ -1,6 +1,6 @@
 
 module PiecePipe
-  class AssemblyStation < Step
+  class AssemblyStep < Step
     def process(item)
       ensure_hash_like_object item
       @assembly = item
@@ -33,7 +33,7 @@ module PiecePipe
     private
     def ensure_hash_like_object(obj)
       unless obj.respond_to?(:[]) and obj.respond_to?(:merge) and obj.respond_to?(:dup)
-        raise "AssemblyStation object #{self.class.name} requires its source to produce Hash-like elements; not acceptable: #{obj.inspect}"
+        raise "AssemblyStep object #{self.class.name} requires its source to produce Hash-like elements; not acceptable: #{obj.inspect}"
       end
     end
   end

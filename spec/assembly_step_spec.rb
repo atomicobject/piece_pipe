@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe PiecePipe::AssemblyStation do
+describe PiecePipe::AssemblyStep do
 
-  context "default AssemblyStation" do
+  context "default AssemblyStep" do
     it "produces unaltered items from its source" do
-      as = PiecePipe::AssemblyStation.new
+      as = PiecePipe::AssemblyStep.new
       as.source = [
         {hello: "hippo"},
         {hello: "lion"}
@@ -17,8 +17,8 @@ describe PiecePipe::AssemblyStation do
     end
   end
 
-  context "a typical AssemblyStation" do
-    class AnimalPhraser < PiecePipe::AssemblyStation
+  context "a typical AssemblyStep" do
+    class AnimalPhraser < PiecePipe::AssemblyStep
       def receive(inputs)
         install phrase: "There are #{inputs[:count]} #{inputs[:animal]}s"
       end
@@ -36,7 +36,7 @@ describe PiecePipe::AssemblyStation do
       ]
     end
 
-    class Cuber < PiecePipe::AssemblyStation
+    class Cuber < PiecePipe::AssemblyStep
       def receive(inputs)
         num = inputs[:num]
         install squared: num * num, cubed: num * num * num
@@ -56,8 +56,8 @@ describe PiecePipe::AssemblyStation do
     end
   end
 
-  context "a filtering AssemblyStation" do
-    class HippoHater < PiecePipe::AssemblyStation
+  context "a filtering AssemblyStep" do
+    class HippoHater < PiecePipe::AssemblyStep
       def receive(inputs)
         unless inputs[:animal] == "Hippo"
           install phrase: "There are #{inputs[:count]} #{inputs[:animal]}s"
@@ -80,8 +80,8 @@ describe PiecePipe::AssemblyStation do
     end
   end
 
-  context "an exploding AssemblyStation" do
-    class LionCrusher < PiecePipe::AssemblyStation
+  context "an exploding AssemblyStep" do
+    class LionCrusher < PiecePipe::AssemblyStep
       def receive(inputs)
         if inputs[:animal] == "Hippo"
           inputs[:lion_count].times do 
@@ -106,18 +106,18 @@ describe PiecePipe::AssemblyStation do
 
   context "error and oddball cases" do
     context "source produces non-Hash inputs" do
-      class MyOtherSomething < PiecePipe::AssemblyStation
+      class MyOtherSomething < PiecePipe::AssemblyStep
       end
 
       it "raises an error indicating requisite input type" do
         as = MyOtherSomething.new
         as.source = [1,2,3]
-        lambda do as.to_enum.to_a end.should raise_error(/AssemblyStation object MyOtherSomething.*Hash-like/)
+        lambda do as.to_enum.to_a end.should raise_error(/AssemblyStep object MyOtherSomething.*Hash-like/)
       end
     end
 
     context "overridden receive() installs nil" do
-      class NilInstaller < PiecePipe::AssemblyStation
+      class NilInstaller < PiecePipe::AssemblyStep
         def receive(inputs)
           install nil
         end
@@ -136,7 +136,7 @@ describe PiecePipe::AssemblyStation do
     end
 
     context "using noop()" do
-      class UseTheNoOp < PiecePipe::AssemblyStation
+      class UseTheNoOp < PiecePipe::AssemblyStep
         def receive(inputs)
           noop
         end
