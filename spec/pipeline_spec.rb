@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PiecePipe::Pipeline do
-  class OneTwoThree < PiecePipe::PipelineElement
+  class OneTwoThree < PiecePipe::Step
     def generate_sequence
       produce 1
       produce 2
@@ -9,7 +9,7 @@ describe PiecePipe::Pipeline do
     end
   end
 
-  class TheDoubler < PiecePipe::PipelineElement
+  class TheDoubler < PiecePipe::Step
     def process(item)
       produce item * 2
     end
@@ -32,7 +32,7 @@ describe PiecePipe::Pipeline do
     end
   end
 
-  context "using instantiated PipelineElements as steps" do
+  context "using instantiated Steps as steps" do
     it "produces transformed values by processing both steps for each item" do
       subject.
         step(OneTwoThree.new).
@@ -50,7 +50,7 @@ describe PiecePipe::Pipeline do
       subject.to_enum.to_a.should == [20, 40, 60]
     end
 
-    it "works with PipelineElements" do
+    it "works with Steps" do
       subject.
         source(OneTwoThree.new).
         step(TheDoubler)

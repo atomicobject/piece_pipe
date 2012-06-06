@@ -1,5 +1,5 @@
 module PiecePipe
-  class MethodElement < Step
+  class MethodStep < Step
     def initialize(meth)
       raise "method cannot be nil" if meth.nil?
       raise "method must accept 1 or 2 arguments; it accepts #{meth.arity}" if meth.arity != 1 and meth.arity != 2

@@ -20,7 +20,7 @@ module PiecePipe
       when Class
         step = step.new # If the arg is a Class, instantiate it
       when Method
-        step = MethodElement.new(step)
+        step = MethodStep.new(step)
       end
       add_step step
     end

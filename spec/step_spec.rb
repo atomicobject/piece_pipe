@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe PiecePipe::PipelineElement do
+describe PiecePipe::Step do
 
   let (:array_source) { [ "hippo", "distribution", "mechanism" ] }
 
-  context "default PipelineElement" do
+  context "default Step" do
 
     it "provides an enumeration of its source's elements" do
-      e = PiecePipe::PipelineElement.new
+      e = PiecePipe::Step.new
       e.source = array_source
       
       en = e.to_enum
@@ -19,7 +19,7 @@ describe PiecePipe::PipelineElement do
   end
 
   context "overriding #generate_sequence" do 
-    class IntegerGenerator < PiecePipe::PipelineElement
+    class IntegerGenerator < PiecePipe::Step
       def generate_sequence
         process 1
         process 2
@@ -32,7 +32,7 @@ describe PiecePipe::PipelineElement do
       en.to_a.should == [1,2,3]
     end
 
-    class NothingGenerator < PiecePipe::PipelineElement
+    class NothingGenerator < PiecePipe::Step
       def generate_sequence
         
       end
@@ -45,7 +45,7 @@ describe PiecePipe::PipelineElement do
     end
 
     context "bypassing the default #process invocation" do
-    class IntegerProducer < PiecePipe::PipelineElement
+    class IntegerProducer < PiecePipe::Step
       def generate_sequence
         produce 1
         produce 2
@@ -58,7 +58,7 @@ describe PiecePipe::PipelineElement do
         en.to_a.should == [1,2,3]
       end
 
-    class NothingProducer < PiecePipe::PipelineElement
+    class NothingProducer < PiecePipe::Step
       def generate_sequence
 
       end
@@ -72,7 +72,7 @@ describe PiecePipe::PipelineElement do
   end
 
   context "overriding #process" do
-    class StringExpander < PiecePipe::PipelineElement
+    class StringExpander < PiecePipe::Step
       def  process(item)
         produce "x" * item
       end
@@ -84,7 +84,7 @@ describe PiecePipe::PipelineElement do
       se.to_enum.to_a.should == ["xx", "xxxx"]
     end
 
-    class AllFilter < PiecePipe::PipelineElement
+    class AllFilter < PiecePipe::Step
       def process(item)
 
       end
@@ -96,7 +96,7 @@ describe PiecePipe::PipelineElement do
       al.to_enum.to_a.should == []
     end
 
-    class Exploder < PiecePipe::PipelineElement
+    class Exploder < PiecePipe::Step
       def process(item)
         item.times do
           produce "hi #{item}"
@@ -112,7 +112,7 @@ describe PiecePipe::PipelineElement do
   end
 
   context "nill source" do
-    class MySomething < PiecePipe::PipelineElement
+    class MySomething < PiecePipe::Step
     end
 
     it "raises an error" do
