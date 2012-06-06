@@ -1,0 +1,7 @@
+In-file docs and example on how to use the MapStep and Aggregator. Mention in the README.
+
+Details on the AssemblyStep concept and implementation.
+
+Testing: ezpipe.  Bring it, document it, provide examples.
+
+
