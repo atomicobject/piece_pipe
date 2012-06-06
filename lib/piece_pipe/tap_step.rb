@@ -1,5 +1,5 @@
 module PiecePipe
-  class TapStep < PipelineElement
+  class TapStep < Step
     def initialize(&block)
       @block = block
     end

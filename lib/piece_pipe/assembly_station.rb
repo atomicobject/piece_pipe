@@ -1,6 +1,6 @@
 
 module PiecePipe
-  class AssemblyStation < PipelineElement
+  class AssemblyStation < Step
     def process(item)
       ensure_hash_like_object item
       @assembly = item

@@ -1,5 +1,5 @@
 module PiecePipe
-  class Collector < PipelineElement
+  class Collector < Step
     def initialize(key)
       @key = key
     end

@@ -1,5 +1,5 @@
 module PiecePipe
-  class HashedAggregator < PipelineElement
+  class HashedAggregator < Step
     def initialize
       @hash = {}
     end

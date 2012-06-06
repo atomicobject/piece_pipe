@@ -1,5 +1,5 @@
 module PiecePipe
-  class DebugStep < PipelineElement
+  class DebugStep < Step
     def initialize(opts={},&block)
       @opts = opts
       @block = block

@@ -1,5 +1,5 @@
 module PiecePipe
-  class PipelineElement
+  class Step
     attr_accessor :source
 
     def to_enum
@@ -17,7 +17,7 @@ module PiecePipe
 
     def generate_sequence
       if source.nil?
-        raise "The source of PipelineElement #{self.class.name} is nil"
+        raise "The source of Step #{self.class.name} is nil"
       end
       source.to_enum.each do |item|
         process(item)

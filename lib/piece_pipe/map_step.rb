@@ -1,5 +1,5 @@
 module PiecePipe
-  class MapStep < PipelineElement
+  class MapStep < Step
     def process(item)
       map item
     end
