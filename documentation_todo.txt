@@ -1,5 +1,3 @@
-MethodStep
-MethodAssemblyStep
 TapStep
 MapStep
 HashedAggregator
