@@ -35,6 +35,12 @@ module PiecePipe
       add_step step
     end
 
+    # like rails group by, takes the entire row and keys it based on
+    # the fields
+    def group_by(*keys)
+      add_step(GroupByStep.new(*keys))
+    end
+
     def add_step(step)
       step.source = @latest_source
       @latest_source = step

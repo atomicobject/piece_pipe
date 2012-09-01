@@ -1,4 +1,5 @@
 require 'piece_pipe'
+require 'pry'
 
 module SpecHelpers
   def ezpipe(single_step, inputz)

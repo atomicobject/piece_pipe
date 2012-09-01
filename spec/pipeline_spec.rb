@@ -87,4 +87,23 @@ describe PiecePipe::Pipeline do
     end
   end
 
+  describe "#group_by" do
+    let(:project_info) {
+      [
+        {name: "Project 1", project_health_summary: "Summary 1"},
+        {name: "Project 2", project_health_summary: "Summary 2"},
+      ]
+    }
+
+    it "maps the pipeline items down to the values indicated by the given key" do
+      subject.
+        source(project_info).
+        group_by(:name)
+
+      p1 = {"Project 1" => [ {name: "Project 1", project_health_summary: "Summary 1"} ]}
+      p2 = {"Project 2" => [ {name: "Project 2", project_health_summary: "Summary 2"} ]}
+      subject.to_enum.to_a.should == [ p1, p2]
+    end
+  end
+
 end
