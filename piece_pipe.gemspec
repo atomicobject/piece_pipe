@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["crosby@atomicobject.com", "shawn42@gmail.com"]
   gem.description   = %q{PiecePipe is about breaking your problem into its smallest, most interesting pieces, solving those pieces and not spending time on the glue code between them. }
   gem.summary       = %q{ PiecePipe helps you break your code into small interesting pieces and provides the glue for pipelining them together to provide elegant, readable code. }
-  gem.homepage      = "http://atomicobject.com"
+  gem.homepage      = "https://github.com/atomicobject/piece_pipe"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
