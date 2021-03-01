@@ -33,7 +33,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 class NuclearPowerPlantHealthSummaryGenerator
   def generate(region)
     PiecePipe::Pipeline.new.
